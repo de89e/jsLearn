@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //函数
+    function cl(out = '') {
+      console.log(out)
+    }
+    cl('123')
+    function sum(a = 0, b = 0) {
+      return [a, b].toString()
+    }
+    cl(sum(2, 3) + "return")
+
+    function getMaxValue(array1 = []) {
+      max = array1[0]
+      isum = 0
+      for (let i = 0; i < array1.length; i++) {
+        isum += array1[i]
+        if (array1[i] > max) {
+          max = array1[i]
+        }
+      }
+      return max
+    }
+    cl(getMaxValue([123, 234, 55, 999, 234]))
+    //js断点调试。f10不进入函数，f11进入函数
+    function fn(a, b) {
+      cl('fn1')
+    }
+    function fn(a, b, c) {
+      cl('fn2')
+    }
+    fn(1, 2)
+    //作用域
+    let num = 10
+    function fn1() {
+      let num = 20
+      function fn2() {
+        let num = 30
+        console.log(num)//num=30 当在当前作用域查找不到变量的时候 依次往上层查找
+      }
+      fn2()
+    }
+    fn1()
+    //作用域例子
+    function fn3() {
+      function fn4() {
+        cl(inum)
+      }
+      fn4()
+    }
+    let inum = 555
+      // fn3()
+      //匿名函数-函数表达式 与具名函数的不同在于。具名函数可以在任意地方调用，函数表达式。只能在定义的后面调用
+      /*
+      fn（）
+      function fn（）{
+   
+      }
+      函数表达式必须先声明后调用
+      */
+      // let fn2 = function (x, y) {
+
+      // }
+      //匿名函数-立即执行函数 避免全局变量之间的污染 立即执行函数之前要有分号。否则报错
+      ;
+    (function (x, y) { console.log('立即执行函数') })(1, 2)
+      ;
+    (function (x, y) { console.log('立即执行函数2') }(3, 4))
+      ;
+    //立即执行函数是可以加名字胡
+    (function myName(x, y) { console.log('立即执行函数3') }(3, 4))
+      ;
+    //实参是黄色，红色是形参，window是对象实参
+    (function (window, document) {
+      cl(window)
+    }(window, document))
+      ;
+    //箭头函数=>
+    (x, y) => {
+      cl("箭头函数")
+      return "123";
+    }
+    //let second = +prompt('请输入秒数')
+    function getTime(s) {
+      let h = parseInt(s / 60 / 60 % 24)
+      let m = parseInt(s / 60 % 60)
+      s = parseInt(s % 60)
+      h = h < 10 ? '0' + h : h
+      m = m < 10 ? '0' + m : m
+      s = s < 10 ? '0' + s : s
+      return `转换完毕后是${h}小时${m}分钟${s}秒`
+    }
+    //let str = getTime(second)
+    //document.write(str)
+    //console.log("s是" + s);//函数的型参是局部变量
+    //逻辑中断 只存在于 && 和|| 中，当满足一定条件右边代码不执行 true || age++  age++不执行
+    function fn(x, y) {
+      x = x || 0
+      y = y || 0
+
+    }
+    console.log(11 && 22);//22
+    console.log(11 || 22);//11
+
+    //testtest
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    day2
+  </title>
+</head>
+
+<body>
+  <script>
+
+    //运算符 
+    // 赋值 =
+    // 自增 ++ -- 
+    // 比较运算符 > < <> == === != !==
+    //逻辑运算 &&  ||  !
+    console.log(2 == '2')
+    console.log(2 === '2')
+    console.log(undefined == null)
+    console.log(undefined === null)
+    console.log(NaN == NaN)
+    //什么是表达式？什么是语句?
+    //表达式能够求值的代码
+    //语句是一段可以执行的代码
+    //语句分为分支语句 循环语句 ，流程控制三大流程控制语句  1 顺序结构 2 分支结构 3 循环结构
+    if (-2) {
+      //所有的数字除了0都是true
+      console.log("if true")
+    } else {
+      console.log("if false")
+    }
+    // let year = +prompt('请输入年份')
+    // if (year % 4 === 0 && year % 100 != 0 || year % 400 === 0) {
+    //   console.log(`${year}是闰年`)
+    // } else {
+    //   console.log(`${year}是平年`)
+
+    // }
+    if (false) {
+
+    } else if (false) {
+
+    } else {
+
+    }
+    //三元运算符
+    let a = 3, b = 5
+
+    console.log(a > b ? a : b)
+
+
+    let num = prompt(`
+        请输入一个数
+        支持换行格式
+        模板刺符传
+    `)
+    num = num < 10 ? '0' + Number(num) : num
+    console.log(num)
+    // switch
+    switch (2) {
+      case 2:
+        console.log('abc')
+        break
+      case 3:
+        break
+      default:
+        break
+    }
+    //while break continue
+    //for 
+    for (let i = 0; i < 10; i++) {
+
+    }
+  </script>
+</body>
+
+</html>

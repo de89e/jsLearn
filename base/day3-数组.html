@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    let array1 = [23, 56, 125, 11, 90]
+    let sum = 0//undefined+任何数值都是NaN
+    let max = 0
+    console.log(array1)
+    for (let i = 0; i < array1.length; i++) {
+      sum += array1[i]
+      if (array1[i] > max) {
+        max = array1[i]
+      }
+    }
+    console.log(`数组的合是${sum}`)
+    console.log(`数组的平均数是${sum / array1.length}`)
+    console.log(`数组的最大值是${max}`)
+    //数组的赋值
+    array1[2] = 100
+    console.log(array1)
+    array1.push(123)
+    array1.unshift(321)
+    console.log(array1)
+    //删除最后一个数组元素，函数返回删除的值
+    console.log(array1.pop())
+    //删除第一个数组元素，函数返回删除的值
+    console.log(array1.shift())
+    //数组的删除
+    console.log(array1)
+    //第一个参数开始位置，第二个参数删除几个
+    //array1.splice(2) 从第二个删除到最后
+    array1.splice(2, 2)
+    console.log(array1)
+  </script>
+
+</body>
+
+</html>
