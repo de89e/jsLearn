@@ -10,7 +10,62 @@
 
 <body>
   <script>
+    //对象也是一种数据类型  null 是空对象
+    let obj = {
+      'goods-name': '小米',
+      age: 18,
+      'age1': 19,
+      gender: '女',
+      fn: (function () {
+        console.log('obj fn')
+        console.log(this)
+        return '1'
+      }()),
+      fn1: function () {
+        console.log('obj fn1')
+      },
+    }
+    //查
+    console.log(obj.fn)
+    console.log(obj['goods-name'])
+    console.log(obj.age1)
+    //删除
+    delete obj.age;
+    delete obj.age;
+    console.log(typeof NaN)
 
+    //遍历对象 k拿到的是字符串型。 不推荐用for in 遍历数组 
+    for (let k in obj) {
+      console.log('---------------');
+      console.log(k);
+      console.log(obj[k]);
+      console.log('---------------');
+
+    }
+    //数组对象
+    let students = [
+      { name: 'a' },
+      { name: 'a' },
+    ]
+
+    console.log(Math.floor(Math.random() * 10000));
+    console.log(Math.round(1.1));//1
+    console.log(Math.round(1.5));//2
+    console.log(Math.round(0.49));//0
+    console.log(Math.round(-0.5));//-0
+    console.log(Math.round(-0.51));//-1
+    //0-10
+    console.log(Math.floor(Math.random() * (5 + 1)));
+    function getRandom(N, M) {
+      return Math.floor(Math.random() * (M - N + 1)) + N
+    }
+    console.log(getRandom(1, 2))
+    let obj1 = {
+      age: 18
+    }
+    let obj2 = obj1 // 传递的是地址。。。引用。
+    obj2.age = 20
+    console.log(obj1.age)//20
   </script>
 </body>
 

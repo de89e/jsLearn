@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .class1 {
+      width: 30px;
+      height: 20px;
+      background-color: aqua;
+    }
+
+    .class2 {
+      width: 30px;
+      height: 20px;
+      background-color: blueviolet;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="css2" id="id1">
+    123
+  </div>
+  <div class="css1" id="id2">
+    456
+  </div>
+  <div id="id3">
+    789
+  </div>
+  <ul class="nav">
+    <li id="one"></li>
+    <li id="two"></li>
+    <li id="three"></li>
+  </ul>
+
+  <div id="class"></div>
+  <script>
+    //获取元素
+    //变量声明 const优先或者先const再let 复杂数据类型（数组，对象）使用const 是因为 是地址引用 地址不变可以使用const。
+    const arr = []
+    arr.push(123)//不报错
+    console.log(arr)
+    //arr = [1, 2, 3]//报错
+    //DOM文档对象模型 操作网页内容 ，BOM浏览器对象模型
+    const div = document.querySelector('div')
+    console.dir(div)
+    div.style.fontSize = "30px"
+    //css选择器获取。只选匹配的第一个元素。
+    const div2 = document.querySelector('div.css1')
+    console.dir(div2)
+    const div3 = document.querySelector('div#id3')
+    console.dir(div3)
+    const div4 = document.querySelector('ul li:first-child')
+    console.dir(div4)
+    const div5 = document.querySelectorAll('li')//得到伪数组 没有pop push方法
+    console.dir(div5)
+    for (let i = 0; i < div5.length; i++) {
+      console.log(div5[i])
+      console.log(typeof div5[i])
+    }
+    //老的的写法
+    document.getElementById('id3')
+    document.getElementsByTagName('div')
+    document.getElementsByClassName('nav')
+    div.innerText = '<strong>我是一个盒子</strong>'//纯文本不解析标签
+    div2.innerHTML = '<strong>我是一个盒子</strong>'//解析标签
+    const personArray = ['劳而无功', 'asdf', '枯无功', '热线功', '量', '顶替']
+    const random = Math.floor(Math.random() * personArray.length)
+    const one = document.querySelector('#one')
+    one.innerHTML = personArray[random]
+    personArray.splice(random, 1)
+    const random2 = Math.floor(Math.random() * personArray.length)
+    const two = document.querySelector('#two')
+    two.innerHTML = personArray[random2]
+    personArray.splice(random2, 1)
+    const random3 = Math.floor(Math.random() * personArray.length)
+    const three = document.querySelector('#three')
+    three.innerHTML = personArray[random3]
+    personArray.splice(random3, 1)
+
+
+    //常用属性 href title src
+    //样式属性。通过style 通过类名 通过classList
+    const box = document.querySelector('#class')
+    box.style.width = '300px'
+    box.style.height = '200px'
+    box.style.backgroundColor = 'pink'//background-color 转换到 对象调用 使用小驼峰命名。
+    box.style.border = '2px solid black'
+    document.body.style.backgroundImage = 'url("https://n1.itc.cn/img8/wb/recom/2017/01/18/148468950088824592.JPEG")'
+
+    box.style = ""//box.style 优先级 高于 className
+    box.className = 'class1'
+
+  </script>
+</body>
+
+</html>
