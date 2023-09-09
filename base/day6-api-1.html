@@ -38,6 +38,14 @@
   </ul>
 
   <div id="class"></div>
+  <input type="text" name="" id="" value="一些文字">
+  <input type="checkbox" name="" id="chk">
+  //div{$}*5
+  <div id="html5">1</div>
+  <textarea name="" id="" cols="30"
+    rows="5">adfasadfasfwfasdfawfefasdfadfasfwfasdfawfefasdfadfasfwfasdfawfefasdfadfasfwfasdfawfefasdfadfasfwfasdfawfefaadfasfwfasdfawfefasdfadfasfwfasdfawfefasdfadfasfwfasdfawfefasdfadfasfwfasdfawfefasdfadfasfwfasdfawfefasdfadfasfwfasdfawfefasdfadfasfwfasdfawfefasdfadfasfwfasdfawfefasdfadfasfwfasdfawfefasdfadfasfwfasdfawfefasdfadfasfwfasdfawfefasdfsdfadfasfwfasdfawfefasdffwfasdfawfefasdf</textarea>
+  <button id='accept' disabled="disabled"
+    style="width: auto; height: 30px;background-color: rgb(243, 239, 239);">同意协议</button>
   <script>
     //获取元素
     //变量声明 const优先或者先const再let 复杂数据类型（数组，对象）使用const 是因为 是地址引用 地址不变可以使用const。
@@ -94,6 +102,51 @@
 
     box.style = ""//box.style 优先级 高于 className
     box.className = 'class1'
+    box.classList.add('class2') //通过CLASS LIST 追加
+    box.classList.remove('class2') //通过CLASS LIST 追加
+    box.classList.toggle('active') //切换(开关一个类），有就删掉。没有就加上
+    try {
+      const img = document.querySelector('.wrapper img')
+      img.src = 'some url'
+      const p = document.querySelector('.footer p')
+      p.innerHTML = "pppppppppppppppppppppppp"
+      const li = document.querySelector(`.footer li:nth-child(${random + 1})`)//css 选择器 选择第三个LI
+      li.classList.add('active')
+    } catch (e) {
+      console.log(e)
+    }
+    //操作表单
+    const uname = document.querySelector('input')
+    uname.value = '我的名字'
+    uname.type = 'password'
+    console.log('bottom')
+    const chk = document.querySelector('#chk')
+    chk.checked = true
+    //自定义属性html5 以data-开头
+    const html5 = document.querySelector('#html5')
+    html5.dataset.id = 123 //增加了自定义属性
+    html5.dataset//所有的自定义属性
+    //定时器
+    try {
+      const btn = document.querySelector('#accept')
+      let i = 10
+      let clockId = setInterval(function () {
+        i--
+        btn.innerHTML = `阅读协议（${i}秒）`
+        if (i == 0) {
+          clearInterval(clockId)
+          btn.disabled = false
+          btn.innerHTML = `同意注册协议`
+        }
+      }, 1000)//5000毫秒调用一次
+      //先删除 再选中
+      document.querySelector('.slider .active').classList.remove('active')
+      document.querySelector('.slider li:nth-child(5)').classList.add('active')
+
+    } catch (e) {
+      console.log(e)
+
+    }
 
   </script>
 </body>
