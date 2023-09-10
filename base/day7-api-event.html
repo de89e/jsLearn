@@ -10,6 +10,12 @@
 
 <body>
   <style>
+    /*w20+h20+bgc*/
+    .css {
+      width: 200px;
+      height: 200px;
+    }
+
     .box {
       position: relative;
       width: 500px;
@@ -28,6 +34,22 @@
       text-align: center;
       cursor: pointer;
     }
+
+    .pinglun {
+      width: 150px;
+      height: 30px;
+      transition: all 0.3s
+    }
+
+    .pinglun:focus {
+      width: 200px;
+      height: 30px;
+    }
+
+    .total {
+      opacity: 0;
+      transition: all 0.5s;
+    }
   </style>
   <div class="box">
     我是广告
@@ -36,6 +58,15 @@
   <div id="question">问题占位符</div>
   <button id='btn_start'>开始</button>
   <button id='btn_end'>结束</button>
+  <input type="search" id="input">
+  <br />
+  <br />
+  <br />
+  <div class="wrapper">
+    <textarea name="pinglun" id="pinglun" class="pinglun"></textarea>
+    <button>提交</button>
+  </div>
+  <div class="total">0/100字符</div>
   <script>
     const question_arr = ['基本原则', '压下', '二奇才', '顶戴']
     const close = document.querySelector('.close')
@@ -53,9 +84,47 @@
     btn_end.addEventListener('click', function () {
       clearInterval(timer_n)
     })
+    box.addEventListener('mouseenter', function () {
+      console.log('鼠标进入');
+    })
+    box.addEventListener('mouseleave', function () {
+      console.log('鼠标离开');
+    })
     close.addEventListener('click', function () {
       alert('click')
       box.style.display = 'none'
+    })
+    //事件监听 DOM L0  onClick=function(){}
+    //事件监听 DOM L1  addEventListener()
+    //on 会被覆盖。 add可以多次绑定。
+    const input = document.querySelector('[type=search]')
+    input.addEventListener('focus', function () {
+      console.log('获得焦点');
+    })
+    input.addEventListener('blur', function () {
+      console.log('失去焦点');
+    })
+    // 键盘事件
+    input.addEventListener('keydown', function () {
+      console.log('键盘按下');
+    })
+    input.addEventListener('input', function () {
+      console.log(input.value.length);
+    })
+    const pinglun = document.querySelector('[name=pinglun]')
+    const total = document.querySelector('.total')
+    pinglun.addEventListener('focus', function () {
+      total.style.opacity = 1
+    })
+    pinglun.addEventListener('blur', function () {
+      total.style.opacity = 0
+    })
+    //事件对象
+    pinglun.addEventListener('input', function (event) {
+      total.innerHTML = `${pinglun.value.length}/100字符`
+    })
+    pinglun.addEventListener('keyup', function (event) {
+      console.log(event.key);
     })
   </script>
 </body>
