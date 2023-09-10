@@ -50,6 +50,19 @@
       opacity: 0;
       transition: all 0.5s;
     }
+
+    li .active {
+      color: red;
+    }
+
+    div .item {
+      display: none;
+      font-size: 24px;
+    }
+
+    div .active {
+      display: block;
+    }
   </style>
   <div class="box">
     我是广告
@@ -67,6 +80,20 @@
     <button>提交</button>
   </div>
   <div class="total">0/100字符</div>
+  <div>
+    <ul>
+      <li><a href="javascript:;" class="active">TAB-1</a></li>
+      <li><a href="javascript:;">TAB-2</a></li>
+      <li><a href="javascript:;">TAB-3</a></li>
+      <li><a href="javascript:;">TAB-4</a></li>
+      <li><a href="javascript:;">TAB-5</a></li>
+    </ul>
+    <div class="item active">1adfaacfdawec</div>
+    <div class="item">2qwefcqwerqce</div>
+    <div class="item">3qwercqwercq</div>
+    <div class="item">4qwercqwercqw</div>
+    <div class="item">5qwercqwecqwec</div>
+  </div>
   <script>
     const question_arr = ['基本原则', '压下', '二奇才', '顶戴']
     const close = document.querySelector('.close')
@@ -126,6 +153,30 @@
     pinglun.addEventListener('keyup', function (event) {
       console.log(event.key);
     })
+    //环境对象 this 当前函数所执行的环境
+    pinglun.addEventListener('keyup', function (event) {
+      console.log(this);//谁调用this就 指向 谁，this 能改变 指向。箭头函数没有this
+    })
+    const btn = document.querySelector('div>button')
+    btn.addEventListener('click', function (event) {
+      this.style.color = 'red'
+    })
+    //回调函数 当一个函数作为参数传递给另一个函数 这个函数就是回调函数。
+    function fn_callback() {
+      console.log('我是回调函数')
+    }
+    //setInterval(fn_callback, 3000);
+    const as = document.querySelectorAll('div>ul>li>a')
+    for (let i = 0; i < as.length; i++) {
+      as[i].addEventListener('mouseenter', function () {
+        document.querySelector('li>.active').classList.remove('active')
+        //console.log(document.querySelector('.item .active')) 不起作用 因为有空格
+        document.querySelector('div .active').classList.remove('active')
+        this.classList.add('active')
+        document.querySelectorAll('div.item')[i].classList.add('active')//等同
+        document.querySelector(`div.item:nth-child(${i + 2})`).classList.add('active')//等同
+      })
+    }
   </script>
 </body>
 
