@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    .box {
+      position: relative;
+      width: 500px;
+      height: 100px;
+      background-color: aquamarine;
+      margin: 100px auto;
+    }
+
+    .close {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      width: 100px;
+      height: 20px;
+      background-color: blue;
+      text-align: center;
+      cursor: pointer;
+    }
+  </style>
+  <div class="box">
+    我是广告
+    <div class="close">X关闭广告X</div>
+  </div>
+  <div id="question">问题占位符</div>
+  <button id='btn_start'>开始</button>
+  <button id='btn_end'>结束</button>
+  <script>
+    const question_arr = ['基本原则', '压下', '二奇才', '顶戴']
+    const close = document.querySelector('.close')
+    const box = document.querySelector('.box')
+    const div_question = document.querySelector('#question')
+    const btn_start = document.querySelector('#btn_start')
+    const btn_end = document.querySelector('#btn_end')
+    let timer_n = 0
+    btn_start.addEventListener('click', function () {
+      timer_n = setInterval(function () {
+        const random = parseInt(Math.random() * question_arr.length)
+        div_question.innerHTML = question_arr[random]
+      }, 50)
+    })
+    btn_end.addEventListener('click', function () {
+      clearInterval(timer_n)
+    })
+    close.addEventListener('click', function () {
+      alert('click')
+      box.style.display = 'none'
+    })
+  </script>
+</body>
+
+</html>
