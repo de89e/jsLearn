@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 1000px;
+    }
+
+    div {
+      overflow: scroll;
+      height: 200px;
+      width: 300px;
+      border: solid 1px black;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    很多文字很多文字很多文字很多文字很多文字很多文字很多文字
+    很多文字很多文字很多文字很多文字很多文字很多文字很多文字
+    很多文字很多文字很多文字很多文字很多文字很多文字很多文字
+    很多文字很多文字很多文字很多文字很多文字很多文字很多文字
+    很多文字很多文字很多文字很多文字很多文字很多文字很多文字
+    很多文字很多文字很多文字很多文字很多文字很多文字很多文字
+    很多文字很多文字很多文字很多文字很多文字很多文字很多文字
+    很多文字很多文字很多文字很多文字很多文字很多文字很多文字
+    很多文字很多文字很多文字很多文字很多文字很多文字很多文字
+    很多文字很多文字很多文字很多文字很多文字很多文字很多文字
+    很多文字很多文字很多文字很多文字很多文字很多文字很多文字
+    很多文字很多文字很多文字很多文字很多文字很多文字很多文字
+    很多文字很多文字很多文字很多文字很多文字很多文字很多文字
+    很多文字很多文字很多文字很多文字很多文字很多文字很多文字
+
+  </div>
+  <button>往下滚</button>
+  <script>
+    document.documentElement.scrollTop = 300
+    window.addEventListener('scroll', function (e) {
+      console.log(document.documentElement.scrollTop);//页面滚动
+      console.log(document.body.scrollTop);//一直为0
+      console.log(document.scrollTop);//没有
+      console.log(window.scrollTop);//没有
+    })
+    document.querySelector('div').addEventListener('scroll', function () {
+      console.log(this.scrollTop);
+
+      //scrollLeft  scrollTop 滚动了多远（可读写的属性)。 scrollHeight scrollWidht 内容的宽度高度
+    })
+    document.querySelector('button').addEventListener('click', function () {
+      document.documentElement.scrollTop = 300
+    })
+  </script>
+</body>
+
+</html>

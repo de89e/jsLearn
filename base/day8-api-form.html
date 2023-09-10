@@ -7,11 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      //alert('1')
+    })
     window.onload = function () {
-
-
-
-
+      //alert('2')
       console.log('window.load')
       const selectAll = document.querySelector('#selectAll')
       const selects = document.querySelectorAll('#select')
@@ -75,6 +75,12 @@
         console.log(e.target);//e.target 就是我们点击的对象
         e.target.style.color = 'red'
         //阻止事件的默认行为
+
+      })
+      const form = document.querySelector('form')
+      form.addEventListener('submit', function (e) {
+        //阻止提交
+        e.preventDefault()
 
       })
       //bottom
@@ -142,12 +148,7 @@
     <button type="submit">立即注册</button>
   </form>
   <script>
-    const form = document.querySelector('form')
-    form.addEventListener('submit', function (e) {
-      //阻止提交
-      e.preventDefault()
 
-    })
   </script>
 </body>
 
