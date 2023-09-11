@@ -7,6 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
+    html {
+      /* 页面平滑滑动 就不需要使用js 去模拟滑动了 */
+      scroll-behavior: smooth;
+    }
+
     body {
       height: 1000px;
     }
@@ -55,6 +60,8 @@
     document.querySelector('button').addEventListener('click', function () {
       document.documentElement.scrollTop = 300
     })
+    /* 几个位置的属性 offset scroll client */
+
   </script>
 </body>
 

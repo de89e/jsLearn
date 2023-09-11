@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./swiper/swiper-bundle.min.css">
+  <style>
+    .box {
+      width: 960px;
+      height: 200px;
+      margin: 0 auto;
+    }
+
+    .swiper {
+      width: auto;
+      height: 200px;
+    }
+
+    .swiper img {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+
+<body>
+  <script>
+  //touchstart touchmove touchend
+  //m端一般都是插件  www.swiper.com.cn
+  </script>
+  <div class="box">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img
+            src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F303d1162-72e1-42a1-9cb4-56c2a16e7a89%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1697035476&t=5e3c05a0a9573b73ac6a9a160adbee73"
+            alt=""></div>
+        <div class="swiper-slide"><img
+            src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F8e6c383c-5594-477d-b34c-6866c426bdf4%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1697035476&t=ef42b163f959d34a0db294ef3335bb31"
+            alt=""></div>
+        <div class="swiper-slide"><img
+            src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2Fb0d14bac-da11-4c13-9814-059eeaabc4e1%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1697035476&t=1544ea6c7d6fd3221a0bfcbd5b743d88"
+            alt=""></div>
+      </div>
+      <!-- 如果需要分页器 -->
+      <div class="swiper-pagination"></div>
+
+      <!-- 如果需要导航按钮 -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+  <script src="./swiper/swiper-bundle.min.js"> </script>
+  <script>
+    var mySwiper = new Swiper('.swiper', {
+      // 如果需要分页器
+      pagination: {
+        el: '.swiper-pagination',
+      },
+
+      // 如果需要前进后退按钮
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      autoplay: true,
+      loop: true,
+    })        
+  </script>
+</body>
+
+</html>

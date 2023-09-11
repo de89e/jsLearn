@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+
+  </div>
+  <script>
+    /* 日期对像 */
+    //new 实例化
+
+    const div = document.querySelector('div');
+    let date = new Date()
+    setInterval(function () {
+      let date = new Date()
+      let year = date.getFullYear()
+      let month = date.getMonth()//0-11 所以要+1
+      let day = date.getDate()//getday 获取星期几 0-6
+      let hour = date.getHours()
+      let minute = date.getMinutes()
+      let secound = date.getSeconds()
+      hour = hour < 10 ? '0' + hour : hour
+      minute = minute < 10 ? '0' + minute : minute
+      secound = secound < 10 ? '0' + secound : secound
+
+      div.innerHTML = `今天是${year}年${month + 1}月${day}日 ${hour}小时 ${minute}分钟 ${secound}秒`
+    }, 100)
+    //console.log(date.getMonth())
+    //时间戳 毫秒数 三种方式。
+    console.log(+new Date());
+    console.log(date.getTime());
+    console.log(Date.now());
+  </script>
+
+</body>
+
+</html>

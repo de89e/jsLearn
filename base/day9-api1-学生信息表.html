@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    input {
+      width: 50px;
+    }
+
+    table {
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <h1>新增学员</h1>
+  </div>
+  <div class="box">
+    <form action="" autocomplete="off">
+      <span>姓名：</span>
+      <input name="name" id="name" type="text">
+      <span>年龄：</span>
+      <input name="old" id="old" type="text">
+      <span>性别：</span>
+      <select id="gender" name="gender" id="">
+        <option value="m">男</option>
+        <option value="fm">女</option>
+      </select>
+      <span>工资：</span>
+      <input name="gongzi" id="gongzi" type="text">
+      <span>城市：</span>
+      <select id="city" name="city" id="">
+        <option value="beijing">北京</option>
+        <option value="shanghai">上海</option>
+        <option value="guangzhou">广州</option>
+      </select>
+      <button type="submit">添加</button>
+    </form>
+  </div>
+  <div class="box">
+    <h1>就业榜</h1>
+  </div>
+  <div class="box">
+    <table>
+      <thead>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>工资</th>
+        <th>城市</th>
+        <th>操作</th>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
+  <script>
+    const data = []
+
+    const name = document.querySelector('#name')
+    const old = document.querySelector('#old')
+    const gender = document.querySelector('#gender')
+    const gongzi = document.querySelector('#gongzi')
+    const city = document.querySelector('#city')
+
+
+    const form = document.querySelector('form')
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      console.log(document.querySelectorAll('[name]'))
+      const obj = {
+        id: data.length + 1,
+        name: name.value,
+        old: old.value,
+        gender: gender.value,
+        gongzi: gongzi.value,
+        city: city.value
+      }
+      //清空表单
+      form.reset()
+      if (obj.name) {
+        data.push(obj)
+      }
+      render()
+    })
+    const btn = document.querySelector('button')
+    btn.addEventListener('click', function (e) {
+
+    })
+    const tbody = document.querySelector('tbody')
+    function render() {
+      if (tbody.children) {
+        tbody.innerHTML = ""
+      }
+      for (let i = 0; i < data.length; i++) {
+        const tr = document.createElement('tr')
+        tr.innerHTML = `
+          <td>${data[i].id}</td>
+          <td>${data[i].name}</td>
+          <td>${data[i].old}</td>
+          <td>${data[i].gender}</td>
+          <td>${data[i].gongzi}</td>
+          <td>${data[i].city}</td>
+          <td><a href="javascript:;" data-id="${i}">删除</a></td>
+          `
+        //tbody.appendChild(tr)
+        tbody.insertBefore(tr, tbody.children[0])
+      }
+    }
+
+    //删除
+    tbody.addEventListener('click', function (e) {
+      if (e.target.tagName === "A") {
+        console.log(e.target.dataset.id);
+        data.splice(e.target.dataset.id, 1);
+        render();
+      }
+    })
+  </script>
+</body>
+
+</html>

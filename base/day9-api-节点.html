@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <img src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" alt=""><input type="button"
+      value="关闭DIV">
+  </div>
+  <div>
+    <img src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" alt=""><input type="button"
+      value="关闭DIV">
+  </div>
+  <div>
+    <img src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" alt=""><input type="button"
+      value="关闭DIV">
+  </div>
+  <ul>
+    <li>
+      <p>1</p>
+    </li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  <script>
+    //查找
+    const btn = document.querySelectorAll('input')
+    //元素.parentNode最近一级的父节点 null
+    for (let i = 0; i < btn.length; i++) {
+      btn[i].addEventListener('click', function (event) {
+        this.parentNode.style.display = 'none'
+      })
+    }
+    //子节点 childNodes 所有子节点 包含文本 注释 等。
+    //children 所有元素的了节点，返回一个伪数组
+    const ul = document.querySelector('ul')
+    console.log(ul.children);
+    //兄弟节点
+    const li2 = document.querySelector('li:nth-child(2)')
+    //上兄 1
+    console.log(li2.previousElementSibling);
+    //下兄 3
+    console.log(li2.nextElementSibling);
+  </script>
+
+
+  <script>
+    //增加 1创建一个新节点。 2把新节点放到指定位置
+    const a = document.createElement('a')
+    a.href = "http://www.baidu.com"
+    a.innerHTML = "百度"
+    //插入到父元素的最后一个子元素
+    li2.appendChild(a)
+    ul.appendChild(a)
+    //插入到父元素的某一个了元素前面
+    const a2 = document.createElement('a')
+    a2.href = "http://www.baidu.com"
+    a2.innerHTML = "百度"
+    //指定位置
+    ul.insertBefore(a2, ul.children[0])
+
+    //克隆节点 元素.cloneNode(boolen) true: false:
+    const lic = ul.children[1].cloneNode(true)//深克隆
+    lic.innerHTML = "深克隆"
+    ul.insertBefore(lic, ul.children[4])
+  </script>
+
+  <script>
+    //删除 必须经过父元素 。删除子元素
+    ul.removeChild(ul.children[5])
+    li2.parentNode.removeChild(li2.parentNode.children[0])
+  </script>
+
+  <script>
+  //DOM 里每一个内容都称之为节点
+  //节点类型 元素节点  属性节点 文本节点
+  </script>
+</body>
+
+</html>
