@@ -11,6 +11,77 @@
 <body>
   <script>
 
+    //字面量写法
+    let str = '奔若夫 顶戴使用者 efg基本畱一在在曙光地其123实虹师范翼基建'
+    let reg = /在/
+    let reg2 = /abc/
+    //查找1
+    console.log(reg.test(str))//true
+    console.log(reg2.test(str))//false
+    //查找2
+    console.log(reg.exec(str))//返回数组
+    console.log(reg2.exec(str))//null
+
+    //普通字符 ABCabc0123 元字符  [a-zAS-Z0-9] (边界 ^ 开始 $ 结束 量词 字符类 比如\d 表示数字) 修饰符
+    reg2 = /[a-z]/
+    console.log(reg2.test(str))//false
+    console.log(reg2.exec(str))//null
+    console.log('--------------------------');
+    reg2 = /[\d]/
+    console.log(reg2.test(str))//false
+    console.log(reg2.exec(str))//null
+    console.log('--------------------------');
+    console.log(/1234/.test(str))
+    console.log(/^123/.test(str))
+    console.log('--------------------------');
+    //^ 开始 $ 结束
+    console.log(/^哈$/.test("哈哈"))//false
+    console.log('--------------------------');
+    //* 0,多次  + 1，多次  ？ 0，1次
+    console.log(/^哈*$/.test("哈哈哈"))//true
+    console.log(/^哈+$/.test("哈哈"))//true
+    console.log(/^哈?$/.test("哈哈"))//false
+
+    //{n} 必须n次  ｛n,}n或更多 ｛n,m}最少n 最多m
+    console.log('--------------------------');
+    console.log(/^哈{4}$/.test("哈哈"))//false
+    console.log(/^哈{4}$/.test("哈哈哈哈"))//true
+    console.log(/^哈{4}$/.test("哈哈哈哈哈哈"))//false
+
+    console.log('--------------------------');
+    console.log(/^哈{3,5}$/.test("哈哈"))//false
+    console.log(/^哈{3,5}$/.test("哈哈哈哈"))//true
+    console.log(/^哈{3,5}$/.test("哈哈哈哈哈"))//true
+    console.log(/^哈{3,5}$/.test("哈哈哈哈哈哈"))//false
+
+    //字符类 比如\d 表示数字 
+    console.log('--------------------------');
+    console.log(/^[abc]$/.test("a"))//true
+    console.log(/^[abc]$/.test("b"))//true
+    console.log(/^[abc]$/.test("ab"))//false []只选一次
+    console.log(/^[abc]{0,10}$/.test("ab"))//true
+    //[^] 在中括号里面表示取反  . 表示换行以外的任意字符 | 表示或
+    /*
+      \d = [0-9] 
+      \D = [^0-9]
+      \w = [a-zA-Z0-9_]
+      \W = [^a-zA-Z0-9_]
+      \s = [\t\r\n\v\f]
+      \S = [^\t\r\n\v\f]
+      */
+    //日期
+    let regDate = /^\d{4}-\d{1,2}-\d{1,2}/
+
+    //修饰符  /表达式/修饰符
+    console.log('--------------------------');
+    console.log(/^[abc]$/i.test("A"))//true i表示不区分大小写
+
+    //查找 替换
+    console.log('--------------------------');
+    str += "123"
+    console.log(str.replace(/123/, '456'))//true i表示不区分大小写
+    console.log(str.replace(/123/ig, '456'))//true g全局。
+    console.log(str)//true g全局。
   </script>
 </body>
 
