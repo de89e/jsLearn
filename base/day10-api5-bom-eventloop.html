@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 什么是BOM -->
+  <script>
+    window.document.querySelector('html')
+    window.location.hostname
+    window.history.length
+    var num = 10
+    window.num//10
+    let num1 = 10 //const let 一样的效果
+    console.log(0)
+    setInterval(function () {
+      console.log(4)
+    }, 500)
+    //延时函数
+    setTimeout(() => {
+      console.log(window.num1); //undefined
+      console.log(1)
+    }, 0);
+    //延时函数
+    setTimeout(function () {
+      console.log(2); //undefined
+      console.log((new window.URL("http://www.baidu.com/abc/bcd?b=123&p=000#hook")))
+    }, 0);
+
+    //同步 前一个任务执行完后再执行另一个任务 所有同步任务都在主线程是执行 形成一个执行栈
+    //js 的异步是通过回调函数实现 异步任务放到任务队列 所有同步任务执行完。队列里的放到执行栈
+    //结束一个异步任务 就放到一个到执行栈 浏览器 和 nodejs 都是宿主环境。执行异步任务
+    for (let i = 0; i < 1000000000; i++) {
+      Math.sqrt(91254)
+    }
+    console.log(3)
+  </script>
+</body>
+
+</html>

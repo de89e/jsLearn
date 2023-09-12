@@ -83,7 +83,7 @@
     const form = document.querySelector('form')
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      console.log(document.querySelectorAll('[name]'))
+      console.log(document.querySelectorAll('form>[name]'))
       const obj = {
         id: data.length + 1,
         name: name.value,
@@ -96,6 +96,7 @@
       form.reset()
       if (obj.name) {
         data.push(obj)
+        localStorage.setItem('data', JSON.stringify(data))
       }
       render()
     })
@@ -105,6 +106,11 @@
     })
     const tbody = document.querySelector('tbody')
     function render() {
+      const localData = JSON.parse(localStorage.getItem('data'))
+      for (let k in localData) {
+        console.log(localData[k])
+        data[k] = localData[k]
+      }
       if (tbody.children) {
         tbody.innerHTML = ""
       }
@@ -129,9 +135,12 @@
       if (e.target.tagName === "A") {
         console.log(e.target.dataset.id);
         data.splice(e.target.dataset.id, 1);
+        localStorage.setItem('data', JSON.stringify(data))
         render();
       }
     })
+    //
+    render()
   </script>
 </body>
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    console.log(location)
+    console.log(navigator)
+    console.log(history)
+    /* history.go(1)//前进 */
+    /* history.go(-1)//后退 */
+    /*     setTimeout(() => {
+              location.href = "http://www.baidu.com"
+            }, 3000000) */
+    !(function () {
+
+    })()
+    //!相当于;
+    !(function () {
+
+    })()
+    //本地存储 
+    // localStorage  5M左右 长生命周期 本地存储只能存储字符串 得到的都是字符串
+    //sessionStorage 5M左右 生命周期是浏览器关闭消失。
+
+    localStorage.setItem('key', 'value')
+    const value = localStorage.getItem('key')
+    console.log(value);
+    localStorage.removeItem('key')
+    localStorage.clear()
+    //存储复杂数据 转换成字符串
+    const obj = {
+      name: 'abc',
+    }
+    localStorage.setItem('obj', JSON.stringify(obj))
+    console.log(obj.name)
+
+    let obj2 = JSON.parse(localStorage.getItem('obj'))
+    console.log(obj2)
+    //map 遍历数组，并且处理数据， 返回新的数组
+    const arr = ['a', 'b', 'c', 'd']
+    //const arr = { 'a': 'a', 'b': 'b', 'c': 'c', 'd': 'd' } 对象没有map方法
+    const newArr = arr.map((value, index) => {
+      console.log(value)
+      console.log(index)
+      console.log(this)
+      return "字母:" + value
+    })
+    console.log(newArr);
+    console.log(newArr.join('|'));
+    //join
+  </script>
+
+</body>
+
+</html>
