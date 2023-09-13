@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  let obj = {}
+  let obj2 = new Object()
+  //构造函数  函数里面有this 变量名第一个字母 约定大写
+  function Pig(name, age, gender) {
+    this.name = name
+    this.abc = () => {
+
+    }
+    console.log(this)
+    console.log(name)
+
+  }
+  const dad = new Pig("dad")
+  console.log(dad)
+  console.log(typeof dad)
+  console.log(dad.name)
+
+</script>
+
+</html>

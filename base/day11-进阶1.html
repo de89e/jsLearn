@@ -210,7 +210,105 @@
     let b = 2;
     [b, a] = [a, b]
     console.log(a, b)
+    //剩余参数
+    const [x, y, ...z] = [11, 22, 33, 44, 55]
+    console.log(z);
+    //默认值
+    const [m = 0, n = 0] = [11, 22, 33, 44, 55]
+    console.log(m);
+    //按需
+    const [, h = 0] = [11, 22, 33, 44, 55]
+    console.log(h);
+    //对象解构 重要
+    const user = {
+      name: "小明",
+      say: function () {
+        console.log('fuck')
+      }
+    }
+    const { name, say } = user //变量要和属性名一样
+    console.log(name);
+    say()
+    //可以更名
+    const { name: iname, say: yousay } = user //变量要和属性名一样 新变量名在后面
+    console.log(iname);
+    yousay()
+    //解构数组对象
+    const pig = [
+      {
+        name: "peiqi",
+        age: 18
+      },
+      {
+        name: "qiaozhi",
+        age: 6
+      }
+    ]
+    var [{ name: pigname, age }] = pig
+    console.log(pigname);
+    //多级对象解构
+    const qiaozhi = {
+      name: "qiaozhi",
+      family: {
+        sister: 'peiqi'
+      }
+    };
+    var { name: pigname, family: { sister } } = qiaozhi
+    console.log(sister);
+    //应用
+    const msg = {
+      code: 200,
+      data: [
+        {
 
+        },
+        {
+
+        }
+      ],
+      data2: [1, 2, 3]
+    };
+    //因为可以解构 const {data}=msg
+    //所以
+    (({ data, data2 } = msg) => {
+      console.log(typeof data);
+      console.log(data.length);
+      console.log(data);
+      console.log(typeof data2);
+      console.log(data2.length);
+      console.log(data2);
+    })()
+    function test(test) {
+      console.log(test)
+    }
+    test({ abc: 123 })//传递对象。非解构
+
+    const newArray = [1, 2, 3, 4, 5]
+    newArray.forEach(function (item, index) {
+      console.log(item);
+    })
+    //filter 函数
+    let newArr = newArray.filter(function (item, index) {
+      console.log(item);
+      return item > 3 //map 返回的是false 
+    })
+    console.log(newArr);
+    newArr = newArray.map(function (item, index) {
+      console.log(item);
+      return item > 3 //map 返回的是false 
+    })
+    console.log(newArr);
+    newArr = newArray.map(function (item, index) {
+      console.log(item);
+      return item + 3 //map 返回的是false 
+    })
+    console.log(newArr);
+    console.log('------------------');
+    newArr = newArray.filter(function (item, index) {
+      console.log(item);
+      return item + 3 //map 返回的是false 
+    })
+    console.log(newArr);
   </script>
 </body>
 
