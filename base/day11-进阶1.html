@@ -9,7 +9,209 @@
 </head>
 
 <body>
+  <script>
+    //scope 作用域 局部分为 函数作用域 和块作用域 函数执行完毕后变量实际被清空了 ｛｝ 块作用域 let const 产生 块作用域 var不会
+    //作用域链本质上是底层的变量查找机制 父不可访问子作用域
+    //垃圾回收机制
+    //全局变量一般不回收，（页面关闭回收）
+    //闭包 = 内层函数 + 外层函数的变量
+    function outer() {
+      const a = 1
+      function f() {
+        console.log(a)
+      }
+      f()
+    }
+    outer()//外面的人用不了 a
+    //闭包的作用 外部也可以访问函数内部的变量
+    function outer2() {
+      let i = 2
+      function fn() {
+        console.log(i)
+      }
+      return fn
+    }
+    const fun = outer2()
+    fun()
+    //实现数据私有 函数调用的次数
+    let i = 0
+    function fn() {
+      i++
+      console.log("函数被调用的次数" + i)
+    }
+    //i 容易被修改
 
+    function outer3() {
+      let i = 0  // 注意使用let 
+      function fn() {
+        i++
+        console.log("函数被调用的次数" + i)
+      }
+      return fn
+    }
+    const fn1 = outer3()
+
+    const fn2 = (function () {
+      let i = 0
+      function fn() {
+        i++
+        console.log("函数被调用的次数" + i)
+      }
+      return fn
+    }())
+
+
+
+
+  </script>
+
+  <script>
+    console.log(num + "件")
+    var num = 10
+    //变量提升。等价下面的代码
+  </script>
+
+  <script>
+    var num
+    console.log(num + "件")
+    num = 10
+  </script>
+
+  <script>
+    //函数也有提升 会把声明提升的当前作用域的最前面
+    fn()
+    function fn() {
+      console.log('函数提升');
+    }
+  </script>
+  <script>
+    //函数动态参数
+    function getSum() {
+      console.log((arguments));//伪数组 只存在函数中
+      let sum = 0
+      for (let i = 0; i < arguments.length; i++) {
+        sum += arguments[i]
+      }
+      console.log(sum);//伪数组
+    }
+    getSum(1, 2, 3, 4)
+    //剩余参数
+    function getSum2(a, ...args) {
+      console.log(a)
+      console.log(args)//args 真数组   arguments 伪数组 没有pop push 箭头函数没有arguments
+    }
+    getSum2(1, 2, 3, 4)
+
+    //展开运算符
+    const arr = [4, 5, 6, 3, 5, 6, 789, 2, 4]
+    console.log(...arr);
+    console.log(Math.max(...arr));//math.max 不能接数组
+    console.log(Math.max(arr));//math.max 不能接数组 只能接1，2，3类似字符串
+    const arr2 = ['a', 'v']
+    console.log([arr, arr2]);//
+    console.log([...arr, ...arr2]);//拼接数组
+
+    //箭头函数。。。非常重要。为了缩短代码。没有this 使用场景 替代原来定匿名函数的地方
+    //普通匿名
+    const fn5 = function (x) {
+
+    }
+    //箭头函数
+    const fn6 = (y) => {
+
+    }
+    //箭头函数 只有一个参数 可没有小括号
+    const fn7 = z => {
+
+    }
+    //箭头函数 只有一行代码可以省略花括号
+    const fn8 = z => console.log('=>')
+    let fn9 = x => x * 2
+    //等同
+    fn9 = (x) => {
+      return x * 2
+    }
+    //箭头函数 可以没有return 直接返回一个 对象
+
+    fn9 = (uname) => {
+      return { uname: uname }
+    }
+    console.log(fn9('中国人'))
+    ////等同
+    fn9 = (uname) => ({ name: uname }) //需要用小括号包起来。因为编译器不知道｛是对象的还是函数的。
+    console.log(fn9('中国人'))
+
+    const obj = {
+      name: 'andy',
+      say: function () {
+        console.log(this)
+      },
+      say2: () => {
+        console.log(this)//在箭头函数的上一层 作用域 找this window
+      },
+      say3: function () {
+        let i = 0
+        const hi = () => {
+          console.log(this)
+        }
+        hi()
+      }
+      ,
+      say4: () => {
+        let i = 0
+        const hi = () => {
+          console.log(this)
+        }
+        hi()
+      },
+      say5: function () {
+        let i = 0
+        const hi = () => {
+          console.log(this)
+        }
+        return hi
+      },
+      say6: () => {
+        let i = 0
+        const hi = () => {
+          console.log(this)
+        }
+        return hi
+      },
+      say7: {
+        hi: () => {
+          console.log(this)
+        }
+      },
+      say8: {
+        hi: function () {
+          console.log(this)
+        }
+      }
+    }
+    console.log("-------------------------")
+    obj.say()
+    obj.say2()
+    console.log("-------------------------")
+    obj.say3()
+    obj.say4();
+    (obj.say5())();
+    (obj.say6())();
+    obj.say7.hi();
+    obj.say8.hi();
+
+    //解构赋值 
+    //数组解构 对象解构
+    const arr10 = [100, 60, 80]//最大 最小 平均
+    const [max, min, avg] = arr10
+    console.log(max)
+    //应用 交换变量
+    let a = 1
+    let b = 2;
+    [b, a] = [a, b]
+    console.log(a, b)
+
+  </script>
 </body>
 
 </html>
