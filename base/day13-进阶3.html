@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //原型能解决 构造函数浪费内存的问题
+    //通过原型分配的函数 是所有对象共享的
+    //每个构造函数都有一个prototype属性指向另一个对象,所以我们也称不原型对象
+    //this 指向实例化后的对象.
+    function Star() {
+      this.say = function () {
+        console.log(('说'));
+      }
+
+    }
+
+    Star.prototype.sing = function () {
+      console.log(('唱歌'));
+    }
+    console.log(Star.prototype)
+    const you = new Star()
+    const me = new Star()
+    console.log(you.say === me.say);
+    console.log(you.sing === me.sing);
+    //给数组扩展方法
+    Array.prototype.max = function () {
+      return Math.max(...this)//展开实例本身
+    }
+    Array.prototype.min = function () {
+      return Math.min(...this)//展开实例本身
+    }
+    Array.prototype.sum = function () {
+      return this.reduce((p, s) => p + s, 0)//累加
+    }
+    const arr = [122, 333, 444, 312, 123]
+    console.log(arr.max())
+    console.log(arr.min())
+    console.log(arr.sum())
+    //constructor
+    function Car() {
+      this.name = ""
+    }
+    const byd = new Car()
+    console.log(Car.prototype.constructor === Car)
+    //constructor  作用 重新指回构造函数
+    console.log(Car.prototype)
+    Car.prototype = {
+      constructor: Car,
+      slow: function () {
+
+      },
+      quick: function () {
+
+      }
+    }
+
+    console.log(Car.prototype)
+    //对象原型.
+    //每个实例对象都有 __proto__属性  指向构造函数的prototype
+    console.log('----------------')
+    console.log(byd.__proto__)
+
+  </script>
+</body>
+
+</html>

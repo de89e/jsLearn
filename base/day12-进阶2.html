@@ -17,17 +17,52 @@
   function Pig(name, age, gender) {
     this.name = name
     this.abc = () => {
-
+      console.log(this)
     }
     console.log(this)
     console.log(name)
 
+  }
+  Pig.eyes = 2//静态属性
+  Pig.sayHi = function () {//静态方法
+    console.log(this)
   }
   const dad = new Pig("dad")
   console.log(dad)
   console.log(typeof dad)
   console.log(dad.name)
 
+  Pig.sayHi()
+  dad.abc()
+  //dad.sayHi()//报错
+  //内置构造函数 Object Array String Number
+
+
+  const o = { a: 1, b: 2, c: 3 }
+  console.log(Object.keys(o))//返回数组
+  console.log(Object.values(o))//返回数组
+
+  const oo = {}
+  Object.assign(oo, o)//拷贝对象 为什么不用 oo=o ?想一想
+  console.log(oo)
+
+  Object.assign(oo, { m: 'm' })//拷贝对象 添加新属性
+  console.log(oo)
+  //Array.reduce() 数组的和。
+  //Array.from() 假数组转为真数组
+  const arr = [2, 3, 4]
+  //arr.reduce(function () { }, 起始值)
+  //arr.reduce(function (上一次值，当前值) { }, 起始值)
+  console.log(arr.reduce(function (p, c) {
+    return p + c
+  }))
+  console.log(arr.reduce(function (p, c) {
+    return p + c
+  }, 10))//10为初始值
+  console.log(arr.reduce((p, c) => p + c, 20))//10为初始值 箭头函数 一行 不用 return
+  //Number.toFixed() //小数位数
+  //0.1+0.2 = 0.30000000004 如何解决
+  //（0.1*1000+0.2*1000）/1000
 </script>
 
 </html>
