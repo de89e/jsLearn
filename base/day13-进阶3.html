@@ -65,8 +65,115 @@
     //每个实例对象都有 __proto__属性  指向构造函数的prototype
     console.log('----------------')
     console.log(byd.__proto__)
+    //原型继承
+    const Person = {
+      eye: 2
+    }
+    function Man() {
+
+    }
+    Man.prototype = Person//原型继承
+    Man.prototype.constructor = Man//原型继承
+    console.log((new Man()).eye)
+
+    //
+    function AppleIphone() {
+      this.type = 'iphone'
+    }
+    function Iphone4() {
+
+    }
+    function Iphone5() {
+
+    }
+    Iphone5.prototype = new AppleIphone()
+    Iphone5.prototype.constructor = Iphone5
+    Iphone4.prototype = new AppleIphone()
+    Iphone4.prototype.constructor = Iphone4
+    Iphone4.prototype.os = '7.1.1'
+    console.log(Iphone4.prototype);
+    console.log(Iphone5.prototype);
+    console.log(Iphone5.type);
+    console.log((new Iphone4));
+    console.log((new Iphone5));
+    console.log((new Iphone4).type);
+    console.log((new Iphone5).type);
+    //原型链
+
+
+    class Book {
+      constructor(a, b) {
+        this.a = a
+        this.b = b
+      }
+      name() {
+
+      }
+    }
+    class CumputerBook extends Book {
+
+    }
+    console.dir(Array)
+  </script>
+
+  <script>
+
+    function Modal(title = '标题', message = '默认信息') {
+      this.title = title
+      this.message = message
+      this.modalBox = document.createElement('div')
+      this.modalBox.className = "modal"
+      this.modalBox.innerHTML = `
+      <div>
+        <span>${title}</span>
+        <li>X</li>
+      </div>
+      <div>${message}</div>
+      `
+      this.open2 = function () {
+        document.body.append(this.modalBox)
+      }
+    }
+    Modal.prototype.open = function () {//不使用箭头函数 因为要用到this
+      document.body.append(this.modalBox)
+      this.modalBox.querySelector('li').style.cursor = "pointer"
+      this.modalBox.querySelector('li').addEventListener('click', () => {//要用箭头函数 .普通函数 指向i 箭头函数指向实例对象
+        this.close()
+      })
+    }
+    Modal.prototype.close = function () {//不使用箭头函数 因为要用到this
+      this.modalBox.remove()
+    }
+    console.log((new Modal('温馨提示', '哈哈哈').open()))
+    console.log((new Modal('温馨提示2', '哈哈哈2').open2()))
+
 
   </script>
+  <div class="data-id-1">123
+    <li></li>
+    <li></li>
+    <li></li>
+  </div>
+  <div class="data-id-2">123
+    <li></li>
+    <li></li>
+    <li></li>
+  </div>
+  <div class="data-id-3">123
+    <li></li>
+    <li></li>
+    <li></li>
+  </div>
+  <div class="data-id-4">123
+    <li></li>
+    <li></li>
+    <li></li>
+  </div>
+  <div class="data-id-5">123
+    <li></li>
+    <li></li>
+    <li></li>
+  </div>
 </body>
 
 </html>
